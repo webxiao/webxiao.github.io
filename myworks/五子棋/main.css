@@ -1,0 +1,343 @@
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	font-family: "苹方";
+	box-sizing:border-box;
+}
+.sence{
+	width: 750px;
+	height: 1334px;
+	background-image: url(img/五子棋1_01.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding-top: 0.1px;
+}
+.title1{
+	width: 385px;
+	height: 100px;
+	line-height: 100px;
+	margin: 0 auto;
+	margin-top: 100px;
+	color:#000;
+	font-size: 80px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 100px;
+}
+.xuanxiang{
+	margin: 0 auto;
+	text-align: center;
+	color: #fff;
+	font-size: 40px;
+	margin-bottom: 40px;
+	width: 291px;
+	height: 85px;
+	line-height: 85px;
+	background-image: url(img/images/五子棋1_04.png);
+	cursor: pointer;
+}
+
+
+
+/*主场景*/
+.mainsence{
+	width: 750px;
+	height: 1334px;
+	background-image: url(img/五子棋3.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding-top: 0.1px;
+	display: none;
+}
+.header{
+	width: 100%;
+	height: 72px;
+}
+.baiqiu{
+	width: 36px;
+	height: 36px;
+	background-repeat: no-repeat;
+	background-image: url(img/images/五子棋3-01_04_05.png);
+	background-position: center center;
+	margin-top: 17px;
+	margin-left: 25px;
+	float: left;
+}
+.wanjiashu{
+	height: 72px;
+	line-height: 72px;
+	font-size: 35px;
+	color: #000;
+	margin-left: 20px;
+	float: left;
+}
+.wanjia{
+	height: 72px;
+	line-height: 72px;
+	font-size: 35px;
+	color: #fff;
+	margin-left: 10px;
+	float: left;
+}
+.dengji{
+	width: 190px;
+	text-align: center;
+	height: 72px;
+	line-height: 72px;
+	font-size: 55px;
+	color: #000;
+	float: left;
+	margin-left: 110px;
+}
+.heiqiu{
+	width: 36px;
+	height: 36px;
+	background-image: url(img/images/五子棋3-01_03.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-top: 17px;
+	margin-right: 25px;
+	float: right;
+}
+.diannaoshu{
+	height: 72px;
+	line-height: 72px;
+	font-size: 35px;
+	color: #000;
+	margin-right: 20px;
+	float: right;
+}
+.diannao{
+	height: 72px;
+	line-height: 72px;
+	font-size: 35px;
+	color: #fff;
+	margin-right: 10px;
+	float: right;
+}
+.nav{
+	margin-top: 30px;
+}
+.xuanxiangnav{
+	width: 95px;
+	height: 46px;
+	text-align: center;
+	font-size: 30px;
+	line-height: 46px;
+	border-radius: 4px;
+	border: 1px solid #666;
+	margin-left: 25px;
+	float: left;
+}
+.xuanxiangnav:hover{
+	background-color: #666;
+	color: #fff;
+}
+.active{
+	background-color: #666;
+	color: #fff;
+}
+canvas{
+	display: block;
+	margin:200px auto;
+	background-color: #dcaa53;
+}
+
+
+/*结束画面*/
+.jieshu{
+	display: none;
+}
+.jieshusence{
+	width: 750px;
+	height: 1334px;
+	background-color: rgba(0,0,0,0.4);
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.jieshukuang{
+	width: 634px;
+	height: 237px;
+	background-color: #fff;
+	border-radius: 25px;
+	margin: 500px auto;
+}
+.youxijieshu{
+	color: #000;
+	height: 142px;
+	border-bottom: 2px solid #d1c15b;
+	font-size: 55px;
+	line-height: 142px;
+	text-align: center;
+}
+.zailaiyiju{
+	width: 317px;
+	border-right: 2px solid #d1c15b;
+	text-align: center;
+	color:#3974c4;
+	font-size: 35px;
+	line-height: 95px;
+	float: left;
+	cursor: pointer;
+}
+.zailaiyiju:hover{
+	transform:translateX(-10px);
+}
+.tuichuyouxi{
+	width: 314px;
+	text-align: center;
+	color:#3974c4;
+	font-size: 35px;
+	line-height: 95px;
+	float: left;
+	cursor: pointer;
+}
+.tuichuyouxi:hover{
+	transform:translateX(-10px);
+}
+
+
+
+/*选项界面*/
+.xuanxiangsence{
+	width: 750px;
+	height: 1334px;
+	background-image: url(img/五子棋3.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	padding-top: 0.1px;
+	display: none;
+}
+.title{
+	width: 120px;
+	height: 60px;
+	font-size: 60px;
+	line-height: 60px;
+	margin: 20px auto;
+	color: #000;
+	margin-bottom: 60px;
+}
+.youxiyinxiao{
+	width: 100%;
+	height: 88px;
+	margin-top: 20px;
+}
+.yxyxkuang{
+	width: 66px;
+	height: 66px;
+	border: 5px solid #000;
+	border-radius: 5px;
+	margin-left: 50px;
+	margin-top: 6px;
+	float: left;
+	position: relative;
+}
+.yxyxkuang img{
+	position: absolute;
+	left: 0;
+	top: -5px;
+}
+.yxyxzi{
+	color:#000;
+	font-size: 45px;
+	line-height: 88px;
+	margin-left: 20px;
+	float: left;
+}
+.guanzhu{
+	width: 100%;
+	height: 350px;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+.gzwm{
+	height: 150px;
+	line-height: 150px;
+	text-align: center;
+	color: #333;
+	font-size: 40px;
+}
+.weibo,.tuite,.youjian{
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	color: #444;
+	font-size: 30px;
+}
+.anniu{
+	width: 100%;
+	margin-top: 150px;
+	height: 300px;
+}
+.anniu3{
+	width: 100%;
+	height: 70px;
+}
+.qcgg{
+	margin-left: 95px;
+	width: 157px;
+	height: 67px;
+	border-radius: 5px;
+	border:2px solid #333;
+	line-height: 67px;
+	color: #222;
+	font-size: 35px;
+	box-shadow: -3px 3px 10px;
+	text-align: center;
+	float: left;
+}
+.hfgm{
+	margin-left: 40px;
+	width: 157px;
+	height: 67px;
+	border-radius: 5px;
+	border:2px solid #333;
+	line-height: 67px;
+	color: #222;
+	font-size: 35px;
+	box-shadow: -3px 3px 10px;
+	text-align: center;
+	float: left;
+}
+.ljsj{
+	margin-left: 40px;
+	width: 157px;
+	height: 67px;
+	border-radius: 5px;
+	border:2px solid #333;
+	line-height: 67px;
+	color: #222;
+	font-size: 35px;
+	box-shadow: -3px 3px 10px;
+	text-align: center;
+	float: left;
+}
+.anniu1{
+	display: block;
+	width: 157px;
+	height: 67px;
+	border-radius: 5px;
+	border:2px solid #333;
+	line-height: 67px;
+	color: #222;
+	font-size: 45px;
+	box-shadow: -3px 3px 10px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 60px;
+}
+.ljsj:hover{
+	background-color: #333;
+	color:#fff;
+}
+.qcgg:hover{
+	background-color: #333;
+	color:#fff;
+}
+.hfgm:hover{
+	background-color: #333;
+	color:#fff;
+}

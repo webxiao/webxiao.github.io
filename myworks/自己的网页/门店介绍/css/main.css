@@ -1,0 +1,268 @@
+.clear:after{
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	clear:both;
+}
+.neikuan{
+	width: 1200px;
+	margin: 0 auto;
+}
+.neikuan5{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+body{
+	font-family: "苹方";
+	background-color: #f6f6f6;
+	position: relative;
+}
+*{
+	box-sizing:border-box;
+	font-family: "苹方";
+}
+
+/*头部开始*/
+header{
+	width: 100%;
+	height: 50px;
+	background-color: #262626;
+	position: relative;
+}
+.logo{
+	float: left;
+	height: 50px;
+	position: absolute;
+	left: 50%;
+	margin-left: -20px;
+}
+.neikuan1{
+	width: 1200px;
+	height: 50px;
+	margin: 0 auto;
+}
+.logo img{
+	height:50px;
+}
+
+.headerzi{
+	width: 84px;
+	height: 32px;
+	line-height: 28px;
+	float: left;
+	font-size: 16px;
+	color:#dedede;
+	margin-right: 90px;
+	border-radius: 18px;
+	text-align: center;
+	margin-top:9px;
+	border: 2px solid #262626;
+	cursor: pointer;
+}
+.you{
+	float: right;
+	margin-right: 0;
+	margin-left:90px;
+}
+.active{
+	border: 2px solid #a7a8aa;
+	color:#fff;
+}
+.headerzi:hover{
+	border: 2px solid #a7a8aa;
+	box-sizing:border-box;
+	color:#fff;
+}
+/*头部结束*/
+/*门店介绍开始*/
+.dazi{
+	height: 90px;
+	line-height: 90px;
+	font-size: 24px;
+	color: #333;
+}
+.fendexian{
+	width: 100%;
+	height: 2px;
+	background-color: #e4e4e4;
+}
+.jieshao{
+	width: 1200px;
+	height: 260px;
+	margin-top: 50px;
+	margin-bottom: 65px;
+}
+.jieshaotu{
+	width: 570px;
+	height: 260px;
+	float: left;
+}
+.jieshaotu img{
+	display: block;
+	width: 570px;
+	height: 260px;
+}
+.jssz{
+	width: 72px;
+	height: 30px;
+	border-left: 2px solid #d5ab61;
+	line-height: 30px;
+	font-size: 20px;
+	color:#111;
+	text-align: center;
+}
+.jieshaozi{
+	float: right;
+	width: 580px;
+	height: 100%;
+}
+.jsqw{
+	line-height: 25px;
+	cursor: pointer;
+}
+.jsqw:hover{
+	color:#888;
+}
+/*门店介绍结束*/
+/*我们的团队开始*/
+.team{
+	width: 130px;
+	margin-bottom: 15px;
+}
+.chef{
+	height: 540px;
+	width: 1200px;
+	margin-bottom: 60px;
+}
+.chef1{
+	height: 540px;
+	width: 370px;
+	background-color: #fff;
+	float: left;
+	margin-right: 45px;
+}
+.chef11{
+	height: 540px;
+	width: 370px;
+	background-color: #fff;
+	float: left;
+	margin-right: 0px;
+}
+.chef1 img{
+	display: block;
+	width: 370px;
+	height: 370px;
+}
+.chushi{
+	width: 100%;
+	height: 80px;
+	border-bottom: 1px solid #efefef;
+}
+.chushiming{
+	line-height: 40px;
+	font-size: 18px;
+	color:#222;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.chushiming:hover{
+	color:red;
+}
+.sheying{
+	font-size: 16px;
+	color:#555;
+	margin-left: 10px;
+	cursor: pointer;
+}
+.sheying:hover{
+	color:#d5ab61;
+}
+.chefjs{
+	font-size: 12px;
+	margin-top: 25px;
+	margin-left: 10px;
+	color:#666;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.chefjs:hover{
+	color:#000;
+}
+/*我们的团队结束*/
+/*底部开始*/
+footer{
+	width: 100%;
+	background-color: #242424;
+	padding: 40px 0;
+}
+.foot1{
+	width: 180px;
+	float: left;
+}
+.foot1 h3{
+	font-size: 14px;
+	color:#dddede;
+	line-height: 40px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.foot1 h3:hover{
+	color: #fff;
+}
+.foot1 h5{
+	font-size: 12px;
+	color:#c3c1c1;
+	line-height: 30px;
+	cursor: pointer;
+}
+.foot1 h5:hover{
+	color: #fff;
+}
+.foot2{
+	width: 310px;
+}
+.foot2 h2{
+	color: #fff;
+}
+.foot3{
+	width: 170px;
+	padding: 0 20px;
+	float: right;
+}
+.erweima img{
+	width: 130px;
+	height: 130px;
+	display: block;
+}
+.foot3 .h4{
+	font-size: 14px;
+	color:#c3c1c1;
+	line-height: 30px;
+	text-align: center;
+	width: 130px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.foot3 .h4:hover{
+	color: #fff;
+}
+.dibuxian{
+	width: 100%;
+	height: 1px;
+	background-color: #727272;
+}
+.zuihou{
+	width: 100%;
+	text-align: center;
+	height: 40px;
+	font-size: 12px;
+	color:#c3c1c1;
+	line-height:40px;
+}
+.footer1{
+	padding: 0;
+}
+
+/*底部结束*/

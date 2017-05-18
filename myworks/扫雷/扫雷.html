@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>扫雷</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            width: 100%;
+            height: 100%;
+            padding-top: 50px;
+        }
+        .sence{
+           width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border-top:1px solid #ccc;
+            border-left:1px solid #ccc;
+            display: none;
+        }
+        .block{
+            width: 49px;
+            height: 49px;
+            background: #333;
+            float: left;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .control{
+            width: 200px;
+            height: auto;
+            position: absolute;
+            left: 50%;
+            margin-left: -460px;
+            top: 100px;
+            /*display: none;*/
+        }
+        .show{
+            background-image: url(img/1.jpg);
+            background-size: cover;
+            background-position: center center;
+            background-color: #fff;
+        }
+        .num{
+            background-color: #fff;
+            text-align: center;
+            font-size: 20px;
+            line-height: 49px;
+        }
+        .flag{
+            background-image: url(img/u=4023034602,283218053&fm=23&gp=0.jpg);
+            background-position: center center;
+            background-size: cover;
+            background-color: #fff;
+        }
+        .zhezhao{
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border-top:1px solid #ccc;
+            border-left:1px solid #ccc;
+            background-color: #000;
+            /*display: none;*/
+        }
+        .logo{
+            width: 100px;
+            height: 100px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        h2{
+            text-align: center;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            color:#fff;
+            font-size: 50px;
+            font-family: "苹方";
+            margin-top: 20px;
+        }
+        h3{
+            text-align: center;
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+            color:#fff;
+            font-size: 50px;
+            font-family: "苹方";
+            margin-top: 20px;
+        }
+        h4{
+            text-align: center;
+            width: 400px;
+            height: 50px;
+            line-height: 50px;
+            color:#fff;
+            font-size: 30px;
+            font-family: "苹方";
+            margin-top: 15px;
+        }
+        .start{
+            display: block;
+            width: 300px;
+            height: 180px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+        .start:hover{
+            transform: scale(1.2);
+            transition: all 1s;
+        }
+        .flagnum,.restart,.easy,.paihang,time{
+            display: block;
+            width: 180px;
+            height:50px;
+            border-radius: 15px;
+            text-align: center;
+            line-height: 50px;
+            margin-bottom: 10px;
+            background-image: url(img/2017-05-10_172052.png);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color:#333;
+            font-size: 20px;
+            font-family: "苹方";
+            cursor: pointer;
+        }
+        .gmo{
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border-top:1px solid #ccc;
+            border-left:1px solid #ccc;
+            background-color: #000;
+            position: absolute;
+            left: 50%;
+            margin-left: -250px;
+            overflow: hidden;
+            display: none;
+            top:100px;
+        }
+        .zlyj{
+            width: 150px;
+            height: 50px;
+            font-size: 20px;
+            font-family: "苹方";
+            cursor: pointer;
+            background-image: url(img/2017-05-10_172052.png);
+            background-position: center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            position: absolute;
+            left: 50px;
+            bottom:100px;
+            border-radius: 15px;
+            text-align: center;
+            line-height: 50px;
+            transition: 1s;
+        }
+        .tcyx{
+            left: 300px;
+        }
+        .zlyj:hover{
+            transform: scale(1.2);
+        }
+        .ndxz{
+            width: 400px;
+            height: 200px;
+            border-radius: 20px;
+            background-color: #008ee8;
+            position: absolute;
+            left:50%;
+            margin-left: -200px;
+            top:130px;
+            display: none;
+            overflow: hidden;
+            z-index: 101;
+        }
+        .easy1{
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            font-family: "苹方";
+            cursor: pointer;
+            border-radius: 20px;
+            text-align: center;
+            transition: 1s;
+            background-color: #dcc8d3;
+            position: absolute;
+            left: 30px;
+        }
+        .easy1:hover{
+            transform: scale(1.2);
+        }
+        .mid{
+            left:160px;
+        }
+        .dif{
+            left:290px;
+        }
+        .scorebox{
+            width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            background-color: #008ee8;
+            position: absolute;
+            left:50%;
+            margin-left: -200px;
+            top:130px;
+            display: none;
+            overflow: hidden;
+            z-index: 101;
+        }
+        .fh{
+            bottom:5px;
+            left: 310px;
+        }
+        .paihangbox{
+            width: 400px;
+            height: 235px;
+            border-radius: 20px;
+            background-color: #008ee8;
+            position: absolute;
+            left:50%;
+            margin-left: -200px;
+            top:130px;
+            display: none;
+            overflow: hidden;
+            z-index: 101;
+        }
+        .paihangbox li{
+            width: 400px;
+            text-align: center;
+            font-size: 25px;
+            line-height: 50px;
+            font-family: "苹方";
+        }
+
+    </style>
+</head>
+<body>
+<div class="zhezhao">
+    <img src="img/u=2783802234,677003321&fm=23&gp=0.jpg" alt="" class="logo">
+    <h2>扫雷小游戏</h2>
+    <img src="img/2017-05-10_165443.png" alt="" class="start">
+</div>
+<div class="sence"></div>
+<div class="control">
+    <time>0s</time>
+    <div class="flagnum">flag:5</div>
+    <div class="restart">重新开始</div>
+    <div class="easy">难度选择</div>
+    <div class="paihang">排行榜</div>
+</div>
+<div class="gmo">
+    <img src="img/u=2783802234,677003321&fm=23&gp=0.jpg" alt="" class="logo">
+    <h2>游戏结束</h2>
+    <div class="zlyj">再来一局</div>
+    <div class="zlyj tcyx">退出游戏</div>
+</div>
+<div class="ndxz">
+    <h3>难度选择</h3>
+    <div class="easy1">简单</div>
+    <div class="easy1 mid">中等</div>
+    <div class="easy1 dif">困难</div>
+</div>
+<div class="scorebox">
+    <h4>你赢了！！！</h4>
+    <h4 class="ni">总共用时：0s</h4>
+    <h4 class="all">最短用时：0s</h4>
+    <div class="easy1 fh">确定</div>
+</div>
+<div class="paihangbox">
+    <h4>排行榜</h4>
+    <li></li>
+    <li></li>
+    <li></li>
+</div>
+<script src="jQuery.js"></script>
+<script>
+    $(document).ready(function(){
+        //选项卡部分
+        //开始游戏
+        $(".start").click(function(){
+           $(".zhezhao").css("display","none");
+           $(".sence").slideDown(800);
+           $(".control").css("display","block");
+           starts();
+        });
+        $(".restart").click(function(){
+            $(".sence").empty();
+            num=num1;
+            starts();
+        });
+        $(".easy").click(function(){
+            $(".ndxz").slideDown(800);
+        });
+        $(".easy1").click(function(){
+            num=3;
+            num1=3;
+            $(".ndxz").slideUp(800);
+        });
+        $(".mid").click(function(){
+            num=5;
+            num1=5;
+            $(".ndxz").slideUp(800);
+        });
+        $(".dif").click(function(){
+            num=10;
+            num1=10;
+            $(".ndxz").slideUp(800);
+        });
+        $(".zlyj").click(function(){
+            $(".sence").slideDown(800);
+            clearInterval(t);
+            t1=0;
+            $("time").html(t1+"s");
+            starts();
+            $(".gmo").slideUp(800);
+        });
+        $(".tcyx").click(function(){
+            $(".gmo").slideUp(800);
+            clearInterval(t);
+            t1=0;
+            $("time").html(t1+"s");
+            $(".zhezhao").slideDown(800);
+            $(".sence").css("display","none");
+        });
+        $(".fh").click(function(){
+            $(".scorebox").slideUp(500);
+            $(".gmo").slideDown(800);
+        });
+        $(".paihang").click(function(e){
+            e.stopPropagation();
+            $(".paihangbox").slideDown(800);  
+        });
+        $(window).click(function(){
+            $(".paihangbox").slideUp(800);
+        })
+
+
+
+
+        //游戏部分
+        var num=5;
+        var num1=5;
+        var scor=0;
+        var bestscor=localStorage.best?JSON.parse(localStorage.best):[];
+        function starts(){
+            t1=0;
+            t=setInterval(jishi,1000);
+            do{
+                $(".sence").empty();
+                for(let i=0;i<10;i++){
+                    for(let j=0;j<10;j++){
+                        var isLei=Math.random()>0.9;
+                        $("<div>")
+                            .addClass(function(){
+                                if(isLei){
+                                    return "block lei";
+                                }else{
+                                    return "block";
+                                }
+                            })
+                            .attr("id",i+"-"+j)
+                            .data("pos",{x:i,y:j})
+                            .mousedown(mousedownEvent)
+                            .appendTo(".sence")
+                    }
+                }
+            }while($(".lei").length!=num);
+        }
+        function mousedownEvent(e){
+            if(leftclick!=null){
+                if(e.which==1){
+                    leftclick.call(this);
+                }else{
+                    rightclick.call(this);
+                }
+            }
+        }
+        function leftclick(){
+            if($(this).hasClass("flag")){
+                return;
+            }
+            if($(this).hasClass("lei")){
+                $(".lei").addClass("show");
+//                $(".sence").css("display","none");
+                clearInterval(t);
+                // leftclick=null;
+                // rightclick=null;
+                $(".sence div").unbind("mousedown");
+                t1=0;
+                $(".gmo").slideDown(5000);
+                return;
+            }else{
+                $(this).addClass("num");
+                var pos=$(this).data("pos");
+                var n=0;
+                for(let i=pos.x-1;i<=pos.x+1;i++){
+                    for(let j=pos.y-1;j<=pos.y+1;j++){
+                        if($("#"+i+"-"+j).hasClass("lei")){
+                            n++;
+                        }
+                    }
+                }
+                $(this).html(n);
+                if(n==0){
+                    for(let i=pos.x-1;i<=pos.x+1;i++){
+                        for(let j=pos.y-1;j<=pos.y+1;j++){
+                            var obj=$("#"+i+"-"+j);
+                            if(obj.length==1&&!obj.hasClass("num")){
+                                leftclick.call(obj[0]);
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        function rightclick(){
+            if($(this).hasClass("num")){
+                return;
+            }
+            if($(this).hasClass("flag")){
+                $(this).removeClass("flag");
+                num++;
+            }else{
+                num--;
+                if(num<0){
+                    num++;
+                    clearInterval(t);
+                    t1=0;
+                    $(".sence div").unbind("mousedown");
+                    alert("游戏失败！");
+                    return;
+
+                    $(".gmo").slideDown(5000);
+                    
+                }
+                $(this).addClass("flag");
+                if(num==0){
+                    if($(".flag").filter(".lei").length==num1){
+                        alert("成功");
+                        clearInterval(t);
+                        $(".scorebox").slideDown(500);
+                        scor=t1;
+                        t1=0;
+                        if(bestscor.length<3||bestscor.length==3&&scor<bestscor[2].scors
+                    ){
+
+                        var name=prompt("请输入姓名：");
+                        bestscor.push({name,scors:scor});
+                        bestscor.sort(function(a,b){
+                            if(a.scors<b.scors){
+                                return -1;
+                            }else{
+                                return 1;
+                            }
+                        })
+                        if(bestscor.length>3){
+                            bestscor.pop();
+                        }
+                        reWrite();
+                    }
+                    localStorage.best=JSON.stringify(bestscor);
+                    $(".ni").html("总共用时"+scor+"s");
+                    $(".all").html("最短用时"+bestscor[0].scors+"s");
+                    }
+                }
+            }
+            $(".flagnum").html("flag"+":"+num);
+        }
+        $(document).on("contextmenu",function(e){
+            e.preventDefault();
+        })
+
+
+        var t;
+        var t1=0;
+        function jishi(){
+            t1++;
+            $("time").html(t1+"s");
+        }
+        function reWrite(){
+            $("li").html("");
+
+        if(bestscor){
+            $(bestscor).each(function(index,v){
+
+                $("li")[index].innerHTML+=v.name+":"+"用时"+v.scors+"s";
+        })
+            }
+    }
+    reWrite();
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+.clear:after{
+	content: "";
+	width: 0;
+	height: 0;
+	display: block;
+	clear:both;
+}
+.neikuan{
+	width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.neikuan5{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+body{
+	font-family: "苹方";
+	position: relative;
+}
+*{
+	box-sizing:border-box;
+	font-family: "苹方";
+}
+
+/*头部开始*/
+header{
+	width: 100%;
+	height: 50px;
+	background-color: #262626;
+	position: relative;
+}
+.logo{
+	float: left;
+	height: 50px;
+	position: absolute;
+	left: 50%;
+	margin-left: -20px;
+}
+.neikuan1{
+	width: 1200px;
+	height: 50px;
+	margin: 0 auto;
+}
+.logo img{
+	height:50px;
+}
+
+.headerzi{
+	width: 84px;
+	height: 32px;
+	line-height: 28px;
+	float: left;
+	font-size: 16px;
+	color:#dedede;
+	margin-right: 90px;
+	border-radius: 18px;
+	text-align: center;
+	margin-top:9px;
+	border: 2px solid #262626;
+	cursor: pointer;
+}
+.you{
+	float: right;
+	margin-right: 0;
+	margin-left:90px;
+}
+.active{
+	border: 2px solid #a7a8aa;
+	color:#fff;
+}
+.headerzi:hover{
+	border: 2px solid #a7a8aa;
+	box-sizing:border-box;
+	color:#fff;
+}
+/*头部结束*/
+/*标题栏开始*/
+.title{
+	background-color: #f6f6f6;
+	width:100%;
+	height:95px;
+	border-bottom: 2px solid #e4e4e4;
+}
+.title p{
+	font-size: 24px;
+	line-height: 93px;
+}
+/*标题栏结束*/
+/*连接处开始*/
+.lj{
+	width: 100%;
+	height: 70px;
+	padding: 1px;
+}
+.stitle{
+	width: 210px;
+	height: 40px;
+	border-left: 3px solid #bd8530;
+	text-align: center;
+	font-size: 20px;
+	line-height: 40px;
+	font-family: "苹方";
+	margin-top: 15px;
+	float: left;
+}
+.jiantou{
+	float: right;
+	width: 62px;
+	height: 30px;
+	margin-top: 20px;
+}
+.zuojian{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	margin-right: 2px;
+	background-color:#ededed;
+	color: #333;
+	float: left; 
+	cursor: pointer;
+}
+.youjian{
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	float: right;
+	background-color:#ededed;
+	cursor: pointer;
+}
+.jiantou .active1{
+	background-color: #c4c4c4;
+}
+/*连接处结束*/
+/*推荐产品开始*/
+.pro1{
+	width: 270px;
+	height: 440px;
+	margin-right: 40px;
+	border: 1px solid #c9c9c9;
+	float: left;
+	position: relative;
+	cursor: pointer;
+}
+.zhe{
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: rgba(255,255,255,0.2);
+	width: 270px;
+	height: 440px;
+	z-index: 4;
+}
+.pro1:hover .zhe{
+	display: none;
+}
+.pro2{
+	margin-right: 0;
+}
+.pro1 img{
+	width: 268px;
+	height: 370px;
+	display: block;
+}
+.price{
+	margin-left: 20px;
+	float: left;
+	width: 60px;
+	line-height: 70px;
+	/*color:#ca913b;*/
+	color: red;
+	font-size: 22px;
+}
+.price:hover{
+	color:red;
+}
+.ckxq{
+	width: 86px;
+	height: 30px;
+	background-color: #ca913b;
+	color: #fff;
+	float: right;
+	margin-right: 20px;
+	text-align: center;
+	margin-top: 20px;
+	border-radius: 15px;
+	line-height: 30px;
+	cursor: pointer;
+}
+.ckxq:hover{
+	background-color: #b2761c;
+}
+.zuizin{
+	margin-bottom: 40px;
+	width: 2400px;
+}
+.zuizin1{
+	width: 2400px;
+}
+.tuzi{
+	width: 268px;
+	height: 80px;
+	position: absolute;
+	bottom: 70px;
+	padding: 0 10px;
+}
+.tuzi h1{
+	font-size: 20px;
+	line-height: 40px;
+	overflow: hidden;
+}
+.tuzi h1:hover{
+	color:#b2761c;
+}
+.tuzi h5:hover{
+	color:#b2761c;
+}
+.tuzi h5{
+	font-size: 16px;
+	line-height: 40px;
+	overflow: hidden;
+	height: 40px;
+}
+/*推荐产品结束*/
+/*底部开始*/
+footer{
+	width: 100%;
+	background-color: #242424;
+	padding: 40px 0;
+}
+.foot1{
+	width: 180px;
+	float: left;
+}
+.foot1 h3{
+	font-size: 14px;
+	color:#dddede;
+	line-height: 40px;
+	margin-bottom: 10px;
+	cursor: pointer;
+}
+.foot1 h3:hover{
+	color: #fff;
+}
+.foot1 h5{
+	font-size: 12px;
+	color:#c3c1c1;
+	line-height: 30px;
+	cursor: pointer;
+}
+.foot1 h5:hover{
+	color: #fff;
+}
+.foot2{
+	width: 310px;
+}
+.foot2 h2{
+	color: #fff;
+}
+.foot3{
+	width: 170px;
+	padding: 0 20px;
+	float: right;
+}
+.erweima img{
+	width: 130px;
+	height: 130px;
+	display: block;
+}
+.foot3 .h4{
+	font-size: 14px;
+	color:#c3c1c1;
+	line-height: 30px;
+	text-align: center;
+	width: 130px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.foot3 .h4:hover{
+	color: #fff;
+}
+.dibuxian{
+	width: 100%;
+	height: 1px;
+	background-color: #727272;
+}
+.zuihou{
+	width: 100%;
+	text-align: center;
+	height: 40px;
+	font-size: 12px;
+	color:#c3c1c1;
+	line-height:40px;
+}
+.footer1{
+	padding: 0;
+}
+
+/*底部结束*/

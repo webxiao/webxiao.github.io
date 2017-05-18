@@ -1,0 +1,144 @@
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+.box{
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	border:1px solid #000;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background-image: url(../img/timg.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.anniu{
+	position: fixed;
+	left: 50%;
+	margin-left: -450px;
+	text-align: center;
+	top:230px;
+	cursor: pointer;
+}
+.input{
+	display: inline-block;
+}
+.gezi{
+	width: 30px;
+	height: 30px;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	box-sizing:border-box;
+	float: left;
+}
+.gezi:nth-child(20n){
+	border-right: 0;
+}
+.gezi:nth-child(380)~.gezi{
+	border-bottom: 0;
+}
+.she{
+	background-color: blue;
+}
+.she:first-child{
+	background-color: red;
+}
+.fenshu{
+	width: 200px;
+	height: 50px;
+	background-color: green;
+	position: fixed;
+	left: 50%;
+	margin-left: -500px;
+	text-align: center;
+	top:130px;
+	font-size: 20px;
+	font-family: Æ»·½;
+	line-height: 50px;
+	display: none;
+}
+.fenshu1{
+	width: 200px;
+	height: 50px;
+	background-color: green;
+	position: fixed;
+	left: 50%;
+	margin-left: -500px;
+	text-align: center;
+	top:50px;
+	font-size: 20px;
+	font-family: è‹¹æ–¹;
+	line-height: 50px;
+	/*display: none;*/
+}
+.fenshu1 span{
+	color:orange;
+}
+.fenshu span{
+	color:orange;
+}
+.food{
+	background-image: url(../img/bookmark-256.png);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.jiemian{
+	width: 600px;
+	height: 600px;
+	background: rgba(0,0,0,0.6);
+	position: absolute;
+	z-index: 100;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+}
+.caidan{
+	width: 600px;
+	height: 100%;
+	margin: 0 auto;
+}
+.caidan h1{
+	color: #fff;
+	text-align: center;
+	font-family: Æ»·½;
+	font-size: 81px;
+	margin-top: -2px;
+}
+.logo{
+	width: 100px;
+	height: 100px;
+	margin: 40px auto;
+	background-image: url(../img/c83c8ff3d5f5291e2934297f5b6128b7834db5a423493-ZH2KVY_fw658.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.shuoming{
+	width: 600px;
+	height: 300px;
+	margin: 0 auto;
+}
+.shuoming h5{
+	font-size: 20px;
+	margin: 20px auto;
+	text-align: center;
+	color:orange;
+}
+.jieshu h5{
+	text-align: center;
+	color: #fff;
+	font-size: 50px;
+	margin-top: 20px;
+}
+.over{
+	display: none;
+}
