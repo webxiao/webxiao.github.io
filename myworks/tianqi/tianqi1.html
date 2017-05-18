@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>天气预报</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	body,html{
+		width: 100%;
+		height:100%;
+	}
+	.bigBox{
+		width: 100%;
+		height:100%;
+		background-image: url(2014112940450409.JPG);
+		background-position: center center;
+		background-size:contain;
+		background-repeat: no-repeat;
+		position: relative;
+	}
+	h1{
+		font-size: 35px;
+		font-family: "苹方";
+		position: absolute;
+		left:50%;
+		margin-left: -400px;
+		top:100px;
+	}
+	form{
+		position: absolute;
+		left:50%;
+		top:100px;
+		display: none;
+	}
+	.nowcity{
+		width: 360px;
+		height: 40px;
+		position: absolute;
+		left: 50%;
+		margin-left: -180px;
+		top:100px;
+	}
+	h3{
+		float: left;
+		font-size: 25px;
+		font-family: "苹方";
+		color:red;
+	}
+	select{
+		width: 180px;
+		height: 40px;
+		font-size: 20px;
+		line-height: 40px;
+		font-family: "苹方";
+	}
+	input[type=button]{
+		display: block;
+		width: 110px;
+		height: 40px;
+		line-height: 40px;
+		font-size: 18px;
+		font-family: "苹方";
+		cursor: pointer;
+		float: right;
+	}
+	.guo{
+		margin-left: -305px;
+		margin-right: 30px;
+	}
+	.sheng{
+		margin-right: 30px;
+	}
+	.csBox{
+		position: absolute;
+		width: 800px;
+		height: 150px;
+		left: 50%;
+		margin-left: -400px;
+		top:155px;
+	}
+	.chengshi{
+		width: 100%;
+		height: 30px;
+		margin-bottom: 10px;
+		line-height: 30px;
+		font-size: 20px;
+		font-family: "苹方";
+	}
+	.suggest{
+		width: 800px;
+		height: 290px;
+		position: absolute;
+		top:255px;
+		left: 50%;
+		margin-left: -400px;
+	}
+	h2{
+		font-size: 25px;
+		font-family: "苹方";
+		color:yellowgreen;
+		margin-top: 10px;
+	}
+	th{
+		height:30px;
+		line-height: 30px;
+		text-align: center;
+		font-size: 18px;
+		font-family: "苹方";
+	}
+	th:nth-child(1){
+		width: 60px;
+	}
+	th:nth-child(2){
+		width: 80px;
+	}
+	th:nth-child(3){
+		width: 635px;
+	}
+	td{
+		text-align: center;
+		line-height: 30px;
+		height: 30px;
+		font-size: 14px;
+		font-family: "苹方";
+	}
+	</style>
+</head>
+<body>
+	<div class="bigBox">
+		<div class="nowcity">
+			<h3><span></span>天气预报</h3>
+			<input type="button" value="切换城市">
+		</div>
+		<form action="" name="myform">
+		    <select name="guojia" class="guo">
+		        <option value="">请选择国家</option>
+		        <option value="">中国</option>
+		    </select>
+		    <select name="province" class="sheng">
+		        <option value="">请选择省份</option>
+		    </select>
+		    <select name="city" class="shi">
+		        <option value="">请选择城市</option>
+		    </select>
+		</form>
+		<div class="csBox">
+			<div class="chengshi"></div>
+			<div class="chengshi"></div>
+			<div class="chengshi"></div>
+		</div>
+		<div class="suggest">
+			<h2>生活指数 :</h2>
+			<table border="1" cellspacing="0">
+				<thead>
+					<th></th>
+					<th>质量</th>
+					<th>相关建议</th>
+				</thead>
+				<tbody>
+					<tr id="air">
+						<td>空气</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr id="comf">
+						<td>舒适度</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr id="cw">
+						<td>洗车</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr id="drsg">
+						<td>穿衣</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr id="flu">
+						<td>感冒</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr id="sport">
+						<td>运动</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr id="trav">
+						<td>旅行</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr id="uv">
+						<td>紫外线</td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+				<tfoot></tfoot>
+			</table>
+		</div>
+	</div>
+</body>
+<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+<script src="jQuery.js"></script>
+<script>
+	//操作天气box
+	function update(city){
+		$(".chengshi").empty();
+		$("span").html(city);
+		$.get("https://free-api.heweather.com/v5/weather",{city:city,key:"3c654fa7a80b449b871684a364ca37d4"},function(r){
+			var arr=["今天","明天","后天"];
+			var sug=r.HeWeather5[0].suggestion;
+        	$.each(r.HeWeather5[0].daily_forecast,function(i,val){
+            $(".chengshi")[i].innerHTML=arr[i]+"&nbsp;&nbsp;&nbsp;&nbsp;"+val.date+"&nbsp;&nbsp;&nbsp;&nbsp;"+val.cond.txt_d+"&nbsp;&nbsp;&nbsp;&nbsp;最高温度为"+val.tmp.max+"&nbsp;&nbsp;&nbsp;&nbsp;最低温度为"+val.tmp.min+"&nbsp;&nbsp;&nbsp;&nbsp;风向为"+val.wind.sc+val.wind.dir
+        	});
+        	console.log(sug)
+        	$.each(sug,function(i,v){
+        		$("#"+i).children().eq(1).html(v.brf);
+        		$("#"+i).children().eq(2).html(v.txt);
+        	})
+    	})
+	}
+	$.getScript("http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js");
+	var  city=remote_ip_info.city;
+	update(city);
+	$("input").click(function(){
+		$(".nowcity").slideUp();
+		$("form").slideDown();
+	}).one("click",function(){
+		$.getJSON("city.json",function(r){
+				var province={};
+				$.each(r,function(i,v){
+					if(!province[v.provinceZh]){
+						province[v.provinceZh]=[];
+					}
+					province[v.provinceZh].push(v.cityZh);
+				})
+				$.each(province,function(i){
+					$("<option>").val(i).text(i).appendTo($(".sheng"))
+				})
+
+				$(".sheng").change(function(){
+					$(".shi").html("<option value=''>请选择城市</option>");
+					var x=$(this).val();
+					$.each(province[x],function(i,v){
+						$("<option>").val(v).text(v).appendTo($(".shi"))
+					})
+				})
+				$(".shi").change(function(){
+					var c=$(this).val();
+					update(c);
+					$(".nowcity").slideDown();
+					$("form").slideUp();
+				})
+			})
+		})
+	
+</script>
+</html>

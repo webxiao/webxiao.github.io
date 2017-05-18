@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @font-face {
+          font-family: 'iconfont';
+          src: url('font/iconfont.eot');
+          src: url('font/iconfont.eot?#iefix') format('embedded-opentype'),
+          url('font/iconfont.woff') format('woff'),
+          url('font/iconfont.ttf') format('truetype'),
+          url('font/iconfont.svg#iconfont') format('svg');
+        }
+        .iconfont{
+          font-family:"iconfont" !important;
+          font-size:16px;font-style:normal;
+          -webkit-font-smoothing: antialiased;
+          -webkit-text-stroke-width: 0.2px;
+          -moz-osx-font-smoothing: grayscale;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        *{
+            box-sizing: border-box;
+            font-family: "苹方";
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+        }
+        .title{
+            width: 100%;
+            height: 100px;
+            background-color: cyan;
+            line-height: 100px;
+            font-size: 40px;
+        }
+        .inputarea{
+            width: 100%;
+            height: 50px;
+        }
+        #submit{
+            width: 150px;
+            height: 50px;
+        }
+        #text{
+            width: 300px;
+            height: 50px;
+            float: left;
+        }
+        .show{
+            width: 100%;
+            background-color: #eee;
+            flex-grow: 1;
+        }
+        .plan{
+            width: 50%;
+            height: 100%;
+            overflow: auto;
+            float: left;
+            background-color: #368;
+        }
+        .done{
+            width: 50%;
+            height: 100%;
+            overflow: auto;
+            float: right;
+            background-color: #ff5e06;
+        }
+        ul li{
+            list-style: none;
+            height: auto;
+        }
+        ul li input{
+            float: left;
+            width: 30px;
+            height: 30px;
+            display: block;
+            margin: 0;
+        }
+        .dele{
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+            font-size: 20px;
+            line-height: 30px;
+        }
+        ul li span{
+            float: left;
+            width: 300px;
+            height: 30px;
+            line-height: 28px;
+            border:1px solid #000;
+            padding-left: 30px;
+            color: #fff;
+            box-sizing: border-box;
+        }
+        ul li time{
+            width: 200px;
+            height: 30px;
+            background-color: yellowgreen;
+            line-height: 30px;
+            color:#fff;
+            display: block;
+            float: right;
+        }
+        .titleLeft,.titleRight{
+            text-align:center;
+            width: 50%;
+            line-height: 30px;
+            color:red;
+            font-weight: bold;
+            font-size: 40px;
+            padding: 20px 0;
+            float: left;
+        }
+        .clear:after{
+            content: "";
+            width: 0;
+            height: 0;
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">TODO LIST</div>
+    <div class="inputarea">
+        <input type="text" id="text">
+        <input type="button" id="submit" value="提交">
+    </div>
+    <div class="show clear">
+        <div class="titleLeft">未完成</div>
+        <div class="titleRight">已完成</div>
+        <ul class="plan">
+            <li class="clear"><input type="checkbox"><span contenteditable="true">12131232</span><time>2017</time></li>
+        </ul>
+
+        <ul class="done">
+            
+        </ul>
+    </div>
+</body>
+<script>
+    var text=document.querySelector("#text");
+    var submit=document.querySelector("#submit");
+    var plan=document.querySelector(".plan");
+    var done=document.querySelector(".done");
+    function getData() {
+        return localStorage.todo?JSON.parse(localStorage.todo):[];
+    }
+    function saveData(data) {
+        localStorage.todo=JSON.stringify(data);
+    }
+    function reWrite(){
+        var data=getData();
+        var str1="";
+        var str2="";
+        data.forEach(function(v,i){
+            if(!v.done){
+                str1+=`<li class="clear" id="${i}"><input type="checkbox" onfocus="changestate(this)"><span contenteditable="true" onblur="changecontent(this)">${v.content}</span><time>${time(v.time)}</time></li>`}else{
+                str2+=`<li class="clear" id="${i}"><input type="text" class="dele iconfont" value="&#xe600;" onfocus="del(this)"><span contenteditable="true" >${v.content}</span><time>${time(v.time)}</time></li>`
+            }
+        })
+        plan.innerHTML=str1;
+        done.innerHTML=str2;
+    }
+    reWrite();
+    submit.onclick=function(){
+        if(text.value==""){
+            return;
+        }
+        var val=text.value;
+        text.value="";
+        var data=getData();
+        var date=new Date();
+        var time=date.getTime();
+        data.push({content:val,time,done:false});
+        saveData(data);
+        reWrite();
+    }
+    function time(t) {
+        var date=new Date();
+        date.setTime(t);
+        var year=setZero(date.getFullYear());
+        var month=setZero(date.getMonth()+1);
+        var day=setZero(date.getDay());
+        var hour=setZero(date.getHours());
+        var minute=setZero(date.getMinutes());
+        var second=setZero(date.getSeconds());
+        return `${year}/${month}/${day} ${hour}:${minute}:${second}`
+    }
+    function setZero(num){
+        if(num<10){
+            return "0"+num;
+        }else{
+            return num;
+        }
+
+    }
+    function changestate(ele) {
+        var id=ele.parentNode.id;
+        var data=getData();
+        data[id].done=true;
+        saveData(data);
+        reWrite();
+    }
+    function del(ele){
+        var id=ele.parentNode.id;
+        var data=getData();
+        data.splice(id,1);
+        saveData(data);
+        reWrite();
+    }
+    function changecontent(ele){
+        var id=ele.parentNode.id;
+        var data=getData();
+        var val=ele.innerHTML;
+        data[id].content=val;
+        saveData(data);
+        reWrite();
+    }
+</script>
+</html>
