@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+
+@keyframes lis{
+	0%{
+		width: 0px;
+	}
+	100%{
+		width: 1140px;
+	}
+}
+.lis{
+	-webkit-animation-name: lis;
+  	animation: lis 2s forwards;
+}
+@keyframes loop{
+	0%{
+		transform:translateY(-5px);
+	}
+	
+	100%{
+		transform:translateY(5px);
+	}
+}
+.loop{
+	-webkit-animation-name: loop;
+  	animation: loop 1s infinite;
+}
+@keyframes bounceOutL{
+	0%{
+		transform:translateX(0);
+	}
+	100%{
+		transform:translateX(-2000px);
+	}
+}
+.bounceOutL{
+	-webkit-animation-name: lis;
+  	animation: bounceOutL 2s forwards;
+}
+@keyframes bounceOutR{
+	0%{
+		transform:translateX(0);
+	}
+	100%{
+		transform:translateX(2000px);
+	}
+}
+.bounceOutR{
+	-webkit-animation-name: lis;
+  	animation: bounceOutR 2s forwards;
+}
+@keyframes lis1{
+	0%{
+		opacity: 0;
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+@keyframes downaaa{
+	0%{
+		transform:translateY(-60px);
+	}
+	25%{
+		transform:translateY(60px);
+	}
+	50%{
+		transform:translateY(-60px);
+	}
+	75%{
+		transform:translateY(30px);
+	}
+	100%{
+		transform:translateY(0);
+	}
+}
+.downaaa{
+	animation:downaaa 2s forwards;
+}
+
+
+@keyframes suofang{
+	0%{
+		transform:scale(0);
+	}
+	60%{
+		transform:scale(1.1);
+	}
+	100%{
+		transform:scale(1);
+	}
+}
+.suofang{
+	animation:suofang 2s forwards;
+}
+
+
+@keyframes suoxiao{
+	0%{
+		transform:scale(1);
+	}
+	50%{
+		transform:scale(0);
+	}
+	100%{
+		transform:scale(1);
+	}
+}
+.suoxiao{
+	animation:suoxiao 2s forwards;
+}
