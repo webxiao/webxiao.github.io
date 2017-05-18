@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>画板</title>
+    <style>
+        canvas{
+            background-color: #eee;
+            margin: 0 auto;
+            display: block;
+        }
+        .box{
+            width: 800px;
+            height: 80px;
+            background-color: #398;
+            margin:0 auto;
+        }
+        section{
+            margin-top: 10px;
+            float: left;
+        }
+        select{
+            float: left;
+        }
+        #che,#save,#clear{
+            width: 100px;
+            display: block;
+            height: 30px;
+            background-color: #00ff00;
+            border:none;
+            border-radius: 15px;
+            margin: 15px 25px;
+            float: left;
+        }
+        .clear:after{
+            width: 0;
+            height: 0;
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .zuo{
+            position: absolute;
+            left: 50%;
+            margin-left: -550px;
+            background-color: #398;
+            width: 150px;
+            height: 500px;
+            top:88px;
+        }
+        input,select{
+            text-align: center;
+        }
+        #jiao{
+            width: 130px;
+            height: 30px;
+            display: block;
+            margin-left: 10px;
+            margin-bottom: 20px;
+        }
+        #side,#width{
+            width: 130px;
+            height: 30px;
+            display: block;
+            margin-left: 10px;
+            margin-bottom: 20px;
+        }
+        .zi{
+            font-size: 16px;
+            line-height: 24px;
+            font-family: "苹方";
+            margin-left: 10px;
+        }
+        span{
+            font-size: 20px;
+            line-height: 80px;
+            font-family: "苹方";
+            margin-left: 10px;
+            float: left; 
+        }
+        .yanse,.fangshi{
+            font-size: 20px;
+            line-height: 80px;
+            font-family: "苹方";
+            margin-left: 50px;
+            float: left;
+            margin-top: -10px; 
+        }
+        #shape{
+            width: 100px;
+            height: 30px;
+            margin-left: 10px;
+            margin-top: 25px;
+        }
+        #style,#color{
+            width: 100px;
+            height: 30px;
+            margin-left: 10px;
+            margin-top: 15px;
+        }
+        img{
+            display: block;
+            width: 150px;
+            height: 80px;
+            position: absolute;
+            left: 50%;
+            margin-left: -550px;
+        }
+    </style>
+</head>
+<body>
+    <img src="C-_Users_姗_Desktop_267868-13122612531564_03.png" alt="">
+    <div class="box clear">
+        <span>请选择图形:</span>
+        <select name="" id="shape">
+           <option value="rect">矩形</option>
+           <option value="jiao">多角星</option>
+           <option value="line">线</option>
+           <option value="yuanin">内切圆</option>
+           <option value="yuanout">外接圆</option>
+           <option value="yuancenter">中心圆</option>
+           <option value="bian">多边形</option>
+           <option value="pen">铅笔</option>
+           <option value="eraser">橡皮</option>
+       </select>
+       <section>
+           <label for="color" class="yanse">请选择颜色</label>
+           <input type="color" id="color">
+       </section>
+       
+       <section>
+           <label for="style" class="fangshi">请选择方式</label>
+           <select name="" id="style">
+               <option value="stroke">描边</option>
+               <option value="fill">填充</option>
+           </select>
+       </section>
+       
+   </div>
+   <div class="zuo clear">
+        <section>
+           <label for="width" class="zi">请选择线宽:</label>
+           <input type="number" id="width" value="2" step="2" min="2" max="20">
+       </section>
+        <section>
+           <label for="style" class="zi">请选择边数:</label>
+           <input type="number" id="side" value="3">
+       </section>
+       <section>
+           <label for="style" class="zi">请选择角数:</label>
+           <input type="number" id="jiao" value="3">
+       </section>
+       <input type="button" id="che" value="撤销">
+       <input type="button" id="save" value="保存">
+       <input type="button" id="clear" value="清空">
+   </div>
+    <canvas width="800" height="500"></canvas>
+</body>
+<script>
+    class Draw{
+        constructor(cobj,option){
+            //option
+            this.cobj=cobj;
+            this.color=option.color;
+            this.width=option.width;
+            this.style=option.style;
+        }
+        init (){
+            this.cobj.strokeStyle=this.color;
+            this.cobj.fillStyle=this.color;
+            this.cobj.lineWidth=this.width;
+    }
+        rect(ox,oy,mx,my){
+            this.init();
+            this.cobj.beginPath();
+            this.cobj.rect(ox,oy,mx-ox,my-oy);
+            this.cobj[this.style]();
+        }
+        line(ox,oy,mx,my){
+            this.init();
+            this.cobj.beginPath();
+            this.cobj.moveTo(ox,oy);
+            this.cobj.lineTo(mx,my);
+            this.cobj.stroke();
+        }
+        yuanin(ox,oy,mx,my){
+            this.init();
+            this.cobj.beginPath();
+            var r=Math.abs(mx-ox)>Math.abs(my-oy)?Math.abs(my-oy)/2:Math.abs(mx-ox);
+            this.cobj.arc(ox+(mx>ox?r:-r),oy+(my>oy?r:-r),r,0,Math.PI*2)
+            this.cobj[this.style]();
+        }
+        yuanout(ox,oy,mx,my){
+            this.init();
+            this.cobj.save();
+            this.cobj.translate(ox,oy);
+            this.cobj.beginPath();
+            var r=Math.sqrt(Math.pow(mx-ox,2)+Math.pow(my-oy,2))/2;
+            this.cobj.arc((mx-ox)/2,(my-oy)/2,r,0,Math.PI*2);
+            this.cobj[this.style]();
+            this.cobj.restore();
+        }
+        yuancenter(ox,oy,mx,my){
+            this.init();
+            this.cobj.beginPath();
+            var r=Math.sqrt(Math.pow(mx-ox,2)+Math.pow(my-oy,2));
+            this.cobj.arc(ox,oy,r,0,Math.PI*2);
+            this.cobj[this.style]();
+        }
+        bian(ox,oy,mx,my,si){
+            console.log(si)
+            this.init();
+            this.cobj.save();
+            this.cobj.translate(ox,oy);
+            this.cobj.rotate(Math.PI/2);
+            var angle=Math.PI/si;
+            var r=Math.sqrt(Math.pow(mx-ox,2)+Math.pow(my-oy,2));
+            var x=Math.cos(angle)*r;
+            var y=Math.sin(angle)*r;
+            this.cobj.beginPath();
+            this.cobj.moveTo(x,-y);
+            for(let i=0;i<si;i++){
+                this.cobj.lineTo(x,y);
+                this.cobj.rotate(angle*2);
+            }
+            this.cobj[this.style]();
+            this.cobj.restore();
+        }
+        pen(ox,oy,mx,my){
+            this.init();
+            this.cobj.lineTo(mx,my);
+            this.cobj.stroke();
+        }
+        eraser(ox,oy,mx,my){
+            this.cobj.clearRect(mx,my,10,10);
+        }
+        jiao(ox,oy,mx,my,si,ji){
+            this.init();
+            this.cobj.save();
+            this.cobj.beginPath();
+            let jis=ji*2;
+            let jiaodu=360/jis;
+            let r=((mx-ox)**2+(my-oy)**2)**0.5;
+            this.jiandu=3;
+            for(let i=0;i<jis;i++){
+                if(i%2==0){
+                    let x=ox+r*Math.cos(Math.PI/180*jiaodu*i);
+                    let y=oy+r*Math.sin(Math.PI/180*jiaodu*i);
+                    this.cobj.lineTo(x,y);
+                }else{
+                    let x=ox+r/this.jiandu*Math.cos(Math.PI/180*jiaodu*i);
+                    let y=oy+r/this.jiandu*Math.sin(Math.PI/180*jiaodu*i);
+                    this.cobj.lineTo(x,y);
+                }
+            }
+            this.cobj.closePath();
+            this.cobj[this.style]();
+        }
+    }
+    const canvas=document.querySelector("canvas");
+    var cobj=canvas.getContext("2d");
+    var data=[];
+    var color=document.querySelector("#color");
+    var widths=document.querySelector("#width");
+    var w="2";
+    var style=document.querySelector("#style");
+    var st="stroke";
+    var side=document.querySelector("#side");
+    var jiao=document.querySelector("#jiao");
+    var ji=3;
+    var si=3;
+    var che=document.querySelector("#che");
+    var save=document.querySelector("#save");
+    var clear=document.querySelector("#clear");
+
+    save.onclick=function(){
+        location.href=canvas.toDataURL().replace("data:image/png","data:stream/octet");
+    }
+    clear.onclick=function(){
+        cobj.clearRect(0,0,800,500);
+        data=[];
+    }
+    che.onclick=function(){
+        if(data.length==0){
+            alert("没有可撤销的图形");
+            return;
+        }
+        cobj.clearRect(0,0,800,500);
+        data.pop();
+        if(data.length==0){
+            return;
+        }
+        cobj.putImageData(data[data.length-1],0,0);
+    }
+    jiao.onchange=function(){
+        ji=this.value;
+        console.log(ji)
+    }
+    side.onchange=function(){
+        si=this.value;
+    }
+    style.onchange=function(){
+        st=this.value;
+    }
+    widths.onchange=function(){
+        w=this.value;
+    }
+    var c;
+    color.onchange=function(){
+        c=this.value;
+    }
+    var shape=document.querySelector("#shape");
+    var s="rect";
+    shape.onchange=function(){
+        s=this.value;
+    }
+    //矩形
+    canvas.onmousedown=function(e){
+        var ox=e.offsetX;
+        var oy=e.offsetY;
+        var draw=new Draw(cobj,{color:c,width:w,style:st});
+        if(s=="pen"){
+            cobj.beginPath();
+            cobj.moveTo(ox,oy)
+        }
+        canvas.onmousemove=function(e){
+            var mx=e.offsetX;
+            var my=e.offsetY;
+            if(s!="eraser"){
+                cobj.clearRect(0,0,800,500);
+                if(data.length!=0){
+                    cobj.putImageData(data[data.length-1],0,0);
+                }
+            }
+            draw[s](ox,oy,mx,my,si,ji);
+        };
+        document.onmouseup=function(){
+            data.push(cobj.getImageData(0,0,800,500));
+            canvas.onmousemove=null;
+            document.onmouseup=null;
+        }
+    }
+
+</script>
+</html>
