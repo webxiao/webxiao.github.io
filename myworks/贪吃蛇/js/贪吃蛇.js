@@ -162,7 +162,6 @@ class snake{
 				that.fenshuzhi.innerHTML=that.she.length-3;
 				console.log(that.maxfen,that.fenshuzhi.innerHTML)
 				if(that.maxfen<that.fenshuzhi.innerHTML){
-					alert(1)
 					that.maxfen=that.fenshuzhi.innerHTML;
 					localStorage.zuigao=that.fenshuzhi.innerHTML;
 
