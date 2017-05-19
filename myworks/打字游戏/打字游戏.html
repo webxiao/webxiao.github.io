@@ -547,7 +547,9 @@
             this.stateinner=stateinner;
             this.maxscore=maxscore;
             this.bestscore=localStorage.bestscore?localStorage.bestscore:0;
+            console.log(this.bestscore)
             this.bestscor=localStorage.bestscor?JSON.parse(localStorage.bestscor):[];
+            console.log(this.bestscor)
         }
         _create(){
             var newdiv=$("<div>");
@@ -634,11 +636,12 @@
             clearInterval(this.t);
             mask.style.display="block";
             this.score.innerHTML=this.defen;
+            console.log(localStorage.bestscore)
             if(this.defen<=this.bestscore){
                 this.maxscore.innerHTML=this.bestscore;
             }else{
-                this.maxscore.innerHTML=localStorage.score;
-                localStorage.score=this.defen;
+                this.maxscore.innerHTML=this.bestscore;
+                localStorage.bestscore=this.defen;
                 this.bestscore=this.defen;
             }
             if(this.bestscor.length<3||(this.bestscor.length>=3&&this.defen>this.bestscor[2].scor)){
