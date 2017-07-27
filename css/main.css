@@ -135,9 +135,9 @@ html,body{
 	height: 528px;
 	float: left;
 	margin-top:82px;
-	background-image:url(../img/20140829142535_j8mUe.png); 
+	background-image:url(../img/肖迪.jpg); 
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: contain;
 	background-position: center center;
 	transform:translateX(-2000px);
 }
